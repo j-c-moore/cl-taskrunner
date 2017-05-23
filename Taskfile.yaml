@@ -1,6 +1,6 @@
 Run_Something:
   desc: Showcase single command with multiple dependencies
-  cmds: date
+  cmds: /usr/bin/true
   deps: [No_Deps, Run_Something_Else]
 
 No_Deps:
@@ -11,7 +11,7 @@ Run_Something_Else:
   desc: Showcase multiple commands
   cmds:
     - ls -lah
-    - ls
+    - ls -lt
 
 third_task:
   desc: Showcase single command with single dependency

@@ -42,7 +42,9 @@
     (unless (listp current-cmd) (setf current-cmd (list current-cmd)))
     (loop for cmd in current-cmd do
       (log:debug "Executing ~a" cmd)
-      (inferior-shell:run cmd))))
+      (inferior-shell:run cmd
+                          :on-error (lambda (run-error)
+                                      (format t "~A~%" run-error) (terminate 1))))))
 
 ;;--------------------------------------------------------------------------------------------------
 (defun find-longest-string (strings)
@@ -87,10 +89,13 @@
                             :toplevel 'main))
 
 ;;--------------------------------------------------------------------------------------------------
-(defun make-linux-binary (compression-level)
+(defun make-linux-binary (&key
+                            (binary-name "task-runner")
+                            (compression-level -1)
+                            (debug-level :debug))
   "Produce a binary for the Linux or macOS platforms."
-  (log:config :error)
-  (sb-ext:save-lisp-and-die "task_runner"
+  (log:config debug-level)
+  (sb-ext:save-lisp-and-die binary-name
                             :executable t
                             :compression compression-level
                             :purify t
