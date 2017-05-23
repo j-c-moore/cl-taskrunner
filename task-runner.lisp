@@ -5,6 +5,7 @@
 (ql:quickload :inferior-shell)
 (ql:quickload :unix-options)
 (ql:quickload :graph)
+(ql:quickload :cl-ppcre)
 
 (log:config :debug)
 
