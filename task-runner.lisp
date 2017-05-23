@@ -42,7 +42,9 @@
     (unless (listp current-cmd) (setf current-cmd (list current-cmd)))
     (loop for cmd in current-cmd do
       (log:debug "Executing ~a" cmd)
-      (inferior-shell:run cmd))))
+      (inferior-shell:run cmd
+                          :on-error (lambda (run-error)
+                                      (format t "~A~%" run-error) (terminate 1))))))
 
 ;;--------------------------------------------------------------------------------------------------
 (defun find-longest-string (strings)
