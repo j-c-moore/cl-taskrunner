@@ -80,10 +80,12 @@
           (select-task (car unix-options:free) tasks (generate-task-graph tasks))))))
 
 ;;--------------------------------------------------------------------------------------------------
-(defun make-windows-binary ()
+(defun make-windows-binary (&key
+                              (binary-name "task_runner.exe")
+                              (debug-level :debug))
   "Produce a binary for the windows platform."
-  (log:config :error)
-  (sb-ext:save-lisp-and-die "task_runner.exe"
+  (log:config debug-level)
+  (sb-ext:save-lisp-and-die binary-name
                             :executable t
                             :purify t
                             :toplevel 'main))
