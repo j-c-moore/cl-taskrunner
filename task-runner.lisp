@@ -1,4 +1,5 @@
 ;;;; Execute a task specified by a YAML task specification.
+(in-package :task-runner)
 (ql:quickload :cl-yaclyaml)
 (ql:quickload :log4cl)
 (ql:quickload :alexandria)
