@@ -1,12 +1,5 @@
 ;;;; Execute a task specified by a YAML task specification.
 (in-package :task-runner)
-(ql:quickload :cl-yaclyaml)
-(ql:quickload :log4cl)
-(ql:quickload :alexandria)
-(ql:quickload :inferior-shell)
-(ql:quickload :unix-options)
-(ql:quickload :graph)
-(ql:quickload :cl-ppcre)
 
 (log:config :debug)
 

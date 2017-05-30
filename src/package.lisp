@@ -1,2 +1,3 @@
 (defpackage #:task-runner
-  (:use #:cl))
+  (:use #:cl)
+  (:export :main))
